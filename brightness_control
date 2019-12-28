@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Adjust path as required
+BACKLIGHT_LOC=/sys/class/backlight/amdgpu_bl0
+MAX=$(cat ${BACKLIGHT_LOC}/max_brightness)
+MIN=20
+RATE=5
+CMD=$1
+CUR=$(cat ${BACKLIGHT_LOC}/brightness)
+
+if [[ ${CMD} == "-up" ]]; then
+    CUR=$(( CUR + RATE ))
+    if [[ ${CUR} -gt ${MAX} ]]; then
+        CUR=${MAX}
+    fi
+else
+    CUR=$(( CUR - RATE ))
+    if [[ ${CUR} -lt ${MIN} ]]; then
+        CUR=${MIN}
+    fi
+fi
+
+echo "Change brightness to ${CUR}"
+echo ${CUR} > ${BACKLIGHT_LOC}/brightness

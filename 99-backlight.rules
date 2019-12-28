@@ -1,0 +1,1 @@
+SUBSYSTEM=="backlight", ACTION=="add", PROGRAM="/bin/bash -c 'chgrp -R display /sys/class/backlight/amdgpu_bl0/* ; chmod g+w /sys/class/backlight/amdgpu_bl0/brightness'"
