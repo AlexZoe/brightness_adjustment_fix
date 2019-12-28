@@ -109,3 +109,19 @@ Adjust the path of the display device in the 'PROGRAM' section of the '99-backli
 Copy the '99-backlight.rules' to '/etc/udev/rules.d'.
 
 Reboot your machine in order for the udev rule to take effect.
+
+### Add Keybindings
+
+In order to adjust the brightness using your keyboard, you can add keybindings at 'Control Center -> Keyboard Shortcuts'.
+I added the following to entries:
+
+Name: Brightness down
+Command: /bin/bash /usr/local/bin/brightness\_control
+Shortcut: Ctrl + F5
+
+Name: Brightness up
+Command: /bin/bash /usr/local/bin/brightness\_control -up
+Shortcut: Ctrl + F6
+
+I choose the F5 and F6 since these keys are associated with brightness adjustment on my keyboard, although the usual key combination is Fn + F5/F6
+
